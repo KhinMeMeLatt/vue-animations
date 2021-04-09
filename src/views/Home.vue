@@ -1,9 +1,15 @@
 <template>
   <div class="home">
+    <button @click="bounce = !bounce">Bounce</button><br>
     <section>
-      <button @click="bounce = !bounce">Bounce</button><br>
       <transition name="bounce_ani">
         <img v-if="bounce" alt="Vue logo" src="../assets/logo.png">
+      </transition>
+    </section>
+    <button @click="roll = !roll">Roll</button><br>
+    <section>
+      <transition name="roll_ani">
+        <img v-if="roll" alt="Vue logo" src="../assets/logo.png">
       </transition>
     </section>
   </div>
@@ -15,7 +21,8 @@ export default {
   name: 'Home',
   data () {
     return {
-      bounce: false
+      bounce: false,
+      roll: false
     }
   }
 }
@@ -40,6 +47,26 @@ section {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+.roll_ani-enter-active {
+  animation: roll-in .5s;
+}
+.roll_ani-leave-active {
+  animation: roll-in .5s reverse;
+}
+@keyframes roll-in {
+  0% {
+    transform: scale(0) rotateZ(0deg) translateX(-250px);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotateZ(360deg) translateX(0px);
+    opacity: 1;
   }
 }
 </style>
