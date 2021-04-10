@@ -12,6 +12,12 @@
         <img v-if="roll" alt="Vue logo" src="../assets/logo.png">
       </transition>
     </section>
+    <button @click="animated = !animated">Animate</button><br>
+    <section>
+      <transition name="animate" enter-active-class="animated flipInY" leave-active-class="animated zoomOutRight">
+        <img v-if="animated" alt="Vue logo" src="../assets/logo.png">
+      </transition>
+    </section>
   </div>
 </template>
 
@@ -22,7 +28,8 @@ export default {
   data () {
     return {
       bounce: false,
-      roll: false
+      roll: false,
+      animated: false
     }
   }
 }
